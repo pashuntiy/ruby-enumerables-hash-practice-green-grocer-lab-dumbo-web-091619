@@ -50,14 +50,12 @@ end
 
 
 def checkout(cart, coupons)
-  # code here
   sortedCart = consolidate_cart(cart)
   couponCart = apply_coupons(sortedCart, coupons)
   clearedCart = apply_clearance(couponCart)
-  
   total = 0 
-  clearedCart.keys.each do |value|
-    total = total + (clearedCart[value][:price] * clearedCart[value][:count])
+  clearedCart.keys.each do |x|
+    total = total + (clearedCart[x][:price] * clearedCart[x][:count])
   end
   if total >100
     return (total *0.9).round(2)
